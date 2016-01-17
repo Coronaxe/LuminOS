@@ -1,0 +1,23 @@
+/* TOUCHUP STYLESHEET; Ensures, that the site is stretched to the maximum size,
+  that elements are 10px apart from each other
+  and defines some new buttons and corner classes */
+html {
+  height: 100%;
+  width:100%;
+}
+body {
+  margin: 10px;
+}
+.btn-xlg {
+  padding: 18px 28px;
+  font-size: 22px;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+.rcorners {
+  border-radius: 25px;
+  border: 5px solid #505050;
+  padding: 20px;
+}
