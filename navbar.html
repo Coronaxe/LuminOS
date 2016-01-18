@@ -9,6 +9,7 @@
     font-family: "Sofachrome";
     src: url('sofachrome.ttf');
   }
+
   @font-face {
     font-family: "Timeburner";
     src: url('timeburner.ttf');
@@ -22,11 +23,21 @@
 -->
 <script>
   $(document).ready(function() {
+    //alters the buttons
     $("a#" + document.getElementsByTagName("body")[0].getAttribute("active")).removeClass("btn-default").addClass("btn-info").addClass("active");
+    $("a").click(function(event) {
+      event.preventDefault();
+      linkLocation = this.href;
+      $("body").stop(true, true).fadeOut(1000, redirect);
+    });
+
+    function redirect() {
+      window.location = linkLocation;
+    }
   });
 </script>
 <!-- Define NavBar -->
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="margin:10px">
   <div class="container-fluid">
     <!-- Define Navbar Buttons -->
     <div class="btn-group" style="font-family:Timeburner">
@@ -39,8 +50,8 @@
 </nav>
 
 <!-- Define Background Style Wrapper -->
-<div id="wrapper" style="margin-top:15%;z-index:-1;text-align:center">
-  <div class="circle-container">
+<div id="wrapper" style="text-align: center;">
+  <div class="circle-container blur">
     <div class="circle"></div>
     <div class="circle"></div>
     <div class="circle"></div>
