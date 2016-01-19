@@ -4,7 +4,7 @@ $(document).ready(function() {
   //Loads the NavBar
   $("#navbar").load("navbar.html");
   //Fades the page in
-  $("body").fadeIn(500);
+  $("body").fadeIn(300);
   console.log("Loaded navbar successfully!");
   $.getScript("utility.js")
     .done(function() {

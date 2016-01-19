@@ -16,7 +16,9 @@ body {
   /* Internet Explorer */
   -o-animation: fadein 3s;
   /* Opera < 12.1 */
-  animation: fadein 3s;*/
+  animation: fadein 3s;
+  /*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAI0lEQVQIW2NkwAT/GdHE/gP5jMiCYAGQIpggXAAmiCIAEgQAAE4FBbECyZcAAAAASUVORK5CYII=) #FFFFFF;
+*/
 }
 .blur {
   -webkit-filter: blur(3px);

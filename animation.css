@@ -12,11 +12,11 @@
   width: 440px;
   height: 440px;
   background: transparent;
-  -webkit-animation: rotation 30s linear 0s infinite normal none;
-  -moz-animation: rotation 30s linear 0s infinite normal none;
-  -ms-animation: rotation 30s linear 0s infinite normal none;
-  -o-animation: rotation 30s linear 0s infinite normal none;
-  animation: rotation 30s linear 0s infinite normal none;
+  -webkit-animation: rotation 300s linear 0s infinite normal none;
+  -moz-animation: rotation 300s linear 0s infinite normal none;
+  -ms-animation: rotation 300s linear 0s infinite normal none;
+  -o-animation: rotation 300s linear 0s infinite normal none;
+  animation: rotation 300s linear 0s infinite normal none;
 }
 .circle {
   position: absolute;

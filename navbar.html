@@ -2,7 +2,7 @@
 <!-- Load Stylesheets; -->
 <link rel="stylesheet" href="bootstrap.css">
 <link rel="stylesheet" href="touchup.css">
-<link rel="stylesheet" href="animation.css">
+<script src="animatebg.js"></script>
 <!-- Define Fonts "Sofachrome" and "Timeburner" -->
 <style>
   @font-face {
@@ -28,7 +28,7 @@
     $("a").click(function(event) {
       event.preventDefault();
       linkLocation = this.href;
-      $("body").stop(true, true).fadeOut(1000, redirect);
+      $("body").stop(true, true).fadeOut(500, redirect);
     });
 
     function redirect() {
@@ -36,27 +36,26 @@
     }
   });
 </script>
+<!-- Define animated Background -->
+<canvas id="canvas" style="z-index:-1;position:fixed"></canvas>
 <!-- Define NavBar -->
-<nav class="navbar navbar-default" style="margin:10px">
+<nav class="navbar navbar-default" style="margin:10px;">
   <div class="container-fluid">
     <!-- Define Navbar Buttons -->
-    <div class="btn-group" style="font-family:Timeburner">
-      <a id="SCAN" class="btn btn-xlg btn-default navbar-btn" href="index.html">SCAN</a>
-      <a id="RESULTS" class="btn btn-xlg btn-default navbar-btn" href="results.html">RESULTS</a>
-      <a id="DEMO" class="btn btn-xlg btn-default navbar-btn" href="demo.html">DEMO</a>
-      <a id="Previous" class="btn btn-xlg btn-default navbar-btn" href="./old">PREVIOUS DESIGN</a>
-    </div>
+    <ul class="nav navbar-nav">
+      <li>
+        <div class="btn-group" style="font-family:Timeburner">
+          <a id="SCAN" class="btn btn-xlg btn-default navbar-btn" href="index.html">SCAN</a>
+          <a id="RESULTS" class="btn btn-xlg btn-default navbar-btn" href="results.html">RESULTS</a>
+          <a id="DEMO" class="btn btn-xlg btn-default navbar-btn" href="demo.html">DEMO</a>
+          <!--<a id="Previous" class="btn btn-xlg btn-default navbar-btn" href="./old">PREVIOUS DESIGN</a>-->
+        </div>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+      <li>
+        <h1><span style="font-family:Sofachrome;">Plate<span style="color:#6699ff">Reader</span></span></h1>
+      </li>
+    </ul>
   </div>
 </nav>
-
-<!-- Define Background Style Wrapper -->
-<div id="wrapper" style="text-align: center;">
-  <div class="circle-container blur">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-  </div>
-  <h1><span style="font-family:Sofachrome;text-align:center">Lumin<span style="color:#6699ff">OS</span></span></h1>
-</div>
