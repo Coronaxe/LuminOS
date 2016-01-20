@@ -1,7 +1,10 @@
 #wrapper {
-  width: 960px;
+  width: 500px;
   height: 500px;
-  margin: 30px auto;
+  margin: 5px auto;
+  z-index: -1;
+  position: fixed;
+  width: 100%;
 }
 .circle-container {
   margin: 0 auto;
@@ -9,11 +12,11 @@
   width: 440px;
   height: 440px;
   background: transparent;
-  -webkit-animation: rotation 30s linear 0s infinite normal none;
-  -moz-animation: rotation 30s linear 0s infinite normal none;
-  -ms-animation: rotation 30s linear 0s infinite normal none;
-  -o-animation: rotation 30s linear 0s infinite normal none;
-  animation: rotation 30s linear 0s infinite normal none;
+  -webkit-animation: rotation 300s linear 0s infinite normal none;
+  -moz-animation: rotation 300s linear 0s infinite normal none;
+  -ms-animation: rotation 300s linear 0s infinite normal none;
+  -o-animation: rotation 300s linear 0s infinite normal none;
+  animation: rotation 300s linear 0s infinite normal none;
 }
 .circle {
   position: absolute;
@@ -64,8 +67,12 @@
   transform: rotate(288deg) translateX(150px);
   background: #4db5dc;
 }
+
 /* Animations */
+
+
 /*************************************************/
+
 @-webkit-keyframes rotation {
   from {
     -webkit-transform: rotate(0deg);

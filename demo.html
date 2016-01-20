@@ -1,10 +1,77 @@
-<!-- DEMO HTML; Is used to show off the capabilities of the XYCore and the ESP2688 module. IS GOING TO BE REMOVED AT THE END OF THE PROJECT! -->
 <html>
 
 <head>
+  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
   <title>Demo</title>
-  <script src="jquery.min.js"></script>
+  <script src="jquery.js"></script>
   <script src="init.js"></script>
+  <script src="utility.js"></script>
+  <script>
+    $("document").ready(function() {
+      $.ajaxSetup({
+        cache: false
+      });
+
+      $.getJSON('ajax/status', {}, function(data) {
+        var fileExist = data.file;
+        //alert(fileExist);
+        if (fileExist) {
+          document.getElementById("download").disabled = false;
+        }
+
+      });
+
+      $(".xyc").click(function() {
+        var mode = $(this).attr('value');
+        $.getJSON('ajax/xy', {
+          mode: mode
+        }, function(data) {
+
+        });
+      });
+
+      $(".scan").click(function() {
+        //console.log("scan!");
+        document.getElementById("reading").innerHTML = "RUNNING";
+        document.getElementById("reading").disabled = true;
+        var mode = $(this).attr('value');
+        $.getJSON('ajax/read', {
+          mode: mode
+        }, function(data) {
+          console.log("Scan command");
+        }).fail(function() {
+          document.getElementById("reading").innerHTML = "&nbspSCAN";
+          document.getElementById("reading").disabled = false;
+          console.log("Error");
+        }).done(function() {
+          document.getElementById("reading").innerHTML = "&nbspSCAN";
+          document.getElementById("reading").disabled = false;
+          document.getElementById("download").disabled = false;
+          console.log("success");
+        });
+      });
+
+      $(".ledtoggle").click(function() {
+        var ledstate = $(this).attr('value');
+        if (ledstate == 1) {
+          $(this).attr("value", "0");
+        } else {
+          $(this).attr("value", "1");
+        }
+        console.log(ledstate);
+        $.getJSON('ajax/led', {
+          value: ledstate
+        }, function(data) {
+          $("#display-led").text(data.value);
+        });
+      });
+
+      var forceCSV = getURLParameter("fcsv");
+      if (forceCSV == 1) {
+        document.getElementById("download").disabled = false;
+      }
+    });
+  </script>
 </head>
 
 <body active="DEMO">
@@ -12,10 +79,51 @@
 
   <div id="navbar"></div>
 
-  <div style="text-align:center">
-
-  </div>
-
+  <table style="font-family:Timeburner;text-align:center;z-index:100;background: rgba(230, 230, 230, .5);margin:auto;margin-top:5%;border-radius:6px;-moz-border-radius:6px;">
+    <tr>
+      <td></td>
+      <td>
+        <button value="up" style="margin-bottom:5%" class="btn btn-default btn-xlg xyc">&nbsp&nbsp&nbspUP&nbsp&nbsp&nbsp</button>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <button value="left" style="margin-right:5%" class="btn btn-default btn-xlg xyc">LEFT</button>
+      </td>
+      <td>
+        <button value="center" class="btn btn-default btn-xlg xyc">CENTER</button>
+      </td>
+      <td>
+        <button value="right" style="margin-left:2%" class="btn btn-default btn-xlg xyc">RIGHT</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button value="zero" style="margin-top:5%" class="btn btn-default btn-xlg xyc">ZERO</button>
+      </td>
+      <td>
+        <button value="down" style="margin-top:5%" class="btn btn-default btn-xlg xyc">DOWN</button>
+      </td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <a href="/readings.csv" download>
+          <button id="download" value="96" style="margin-top:3%" class="btn btn-warning btn-xlg csv" disabled>DOWNLOAD CSV</button>
+        </a>
+      </td>
+      <td>
+        <button id="reading" value="96" style="margin-top:5%" class="btn btn-success btn-xlg scan">&nbspSCAN</button>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <button id="ledtoggle" value="1" style="margin-top:3%" class="btn btn-info btn-xlg ledtoggle">TOGGLE LED</button>
+        <td>
+    </tr>
+  </table>
 </body>
 
 </html>
