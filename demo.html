@@ -5,6 +5,7 @@
   <title>Demo</title>
   <script src="jquery.js"></script>
   <script src="init.js"></script>
+  <script src="utility.js"></script>
   <script>
     $("document").ready(function() {
       $.ajaxSetup({
@@ -64,6 +65,11 @@
           $("#display-led").text(data.value);
         });
       });
+
+      var forceCSV = getURLParameter("fcsv");
+      if (forceCSV == 1) {
+        document.getElementById("download").disabled = false;
+      }
     });
   </script>
 </head>

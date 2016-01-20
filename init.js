@@ -6,11 +6,4 @@ $(document).ready(function() {
   //Fades the page in
   $("body").fadeIn(300);
   console.log("Loaded navbar successfully!");
-  $.getScript("utility.js")
-    .done(function() {
-      console.log("Loaded utility.js successfully!")
-    })
-    .fail(function() {
-      console.log("Error loading utility.js!");
-    });
 });
