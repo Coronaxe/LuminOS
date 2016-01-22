@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+  <!--<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">-->
   <title>Demo</title>
   <script src="jquery.js"></script>
   <script src="init.js"></script>
@@ -75,55 +75,55 @@
 </head>
 
 <body active="DEMO">
-  <noscript>This software uses Javascript! Please enable for correct functionality</noscript>
+    <noscript>This software uses Javascript! Please enable for correct functionality</noscript>
 
-  <div id="navbar"></div>
+    <div id="navbar"></div>
 
-  <table style="font-family:Timeburner;text-align:center;z-index:100;background: rgba(230, 230, 230, .5);margin:auto;margin-top:5%;border-radius:6px;-moz-border-radius:6px;">
-    <tr>
-      <td></td>
-      <td>
-        <button value="up" style="margin-bottom:5%" class="btn btn-default btn-xlg xyc">&nbsp&nbsp&nbspUP&nbsp&nbsp&nbsp</button>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>
-        <button value="left" style="margin-right:5%" class="btn btn-default btn-xlg xyc">LEFT</button>
-      </td>
-      <td>
-        <button value="center" class="btn btn-default btn-xlg xyc">CENTER</button>
-      </td>
-      <td>
-        <button value="right" style="margin-left:2%" class="btn btn-default btn-xlg xyc">RIGHT</button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <button value="zero" style="margin-top:5%" class="btn btn-default btn-xlg xyc">ZERO</button>
-      </td>
-      <td>
-        <button value="down" style="margin-top:5%" class="btn btn-default btn-xlg xyc">DOWN</button>
-      </td>
-      <td>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <a href="/readings.csv" download>
-          <button id="download" value="96" style="margin-top:3%" class="btn btn-warning btn-xlg csv" disabled>DOWNLOAD CSV</button>
-        </a>
-      </td>
-      <td>
-        <button id="reading" value="96" style="margin-top:5%" class="btn btn-success btn-xlg scan">&nbspSCAN</button>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3">
-        <button id="ledtoggle" value="1" style="margin-top:3%" class="btn btn-info btn-xlg ledtoggle">TOGGLE LED</button>
+    <table class="glasspanel" style="border-collapse: separate;border-spacing:.5em;font-family:Timeburner;text-align:center;z-index:100;margin:auto;margin-top:5%;">
+      <tr>
+        <td></td>
         <td>
-    </tr>
-  </table>
+          <button value="up" class="btn btn-default btn-xlg btn-block xyc">UP</button>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <button value="left" class="btn btn-default btn-xlg btn-block xyc">LEFT</button>
+        </td>
+        <td>
+          <button value="center" class="btn btn-default btn-xlg btn-block xyc">CENTER</button>
+        </td>
+        <td>
+          <button value="right" class="btn btn-default btn-xlg btn-block xyc">RIGHT</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button value="zero" class="btn btn-danger btn-xlg btn-block xyc">ZERO</button>
+        </td>
+        <td>
+          <button value="down" class="btn btn-default btn-xlg btn-block xyc">DOWN</button>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <a href="/readings.csv" download>
+            <button id="download" value="96" class="btn btn-warning btn-xlg btn-block csv" disabled>DOWNLOAD CSV</button>
+          </a>
+        </td>
+        <td>
+          <button id="reading" value="96" class="btn btn-success btn-xlg btn-block scan">SCAN</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <button id="ledtoggle" value="1" class="btn btn-info btn-xlg btn-block ledtoggle">TOGGLE LED</button>
+          <td>
+      </tr>
+    </table>
 </body>
 
 </html>

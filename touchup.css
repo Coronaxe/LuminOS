@@ -6,19 +6,26 @@ html {
   /*min-height: 100%;*/
   /*width:100%;*/
 }
-body {
+.nbody{
+  margin:10px;
+}
+.fadein {
   /*margin: 10px;*/
-  /*-webkit-animation: fadein 3s;
+  -webkit-animation: fadein 2s;
   /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 3s;
+  -moz-animation: fadein 2s;
   /* Firefox < 16 */
-  -ms-animation: fadein 3s;
+  -ms-animation: fadein 2s;
   /* Internet Explorer */
-  -o-animation: fadein 3s;
+  -o-animation: fadein 2s;
   /* Opera < 12.1 */
-  animation: fadein 3s;
-  /*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAI0lEQVQIW2NkwAT/GdHE/gP5jMiCYAGQIpggXAAmiCIAEgQAAE4FBbECyZcAAAAASUVORK5CYII=) #FFFFFF;
-*/
+  animation: fadein 2s;
+  /*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAI0lEQVQIW2NkwAT/GdHE/gP5jMiCYAGQIpggXAAmiCIAEgQAAE4FBbECyZcAAAAASUVORK5CYII=) #FFFFFF;*/
+}
+.glasspanel {
+  background: rgba(230, 230, 230, .5);
+  border-radius: 6px;
+  -moz-border-radius: 6px;
 }
 .blur {
   -webkit-filter: blur(3px);
