@@ -1,10 +1,10 @@
 $(document).ready(function() {
   //Ensures Smooth Page Transitions
-  $("body").css("display", "none");
+//  $("body").css("display", "none");
+$("body").hide(0);
   //Loads the NavBar
+  $("body").delay(300).fadeIn(700);
   $("#navbar").load("navbar.html");
-  //Fades the page in
-  $("body").fadeIn(1000);
   console.log("Loaded navbar successfully!");
 
 });
