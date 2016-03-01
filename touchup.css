@@ -6,8 +6,12 @@ html {
   /*min-height: 100%;*/
   /*width:100%;*/
 }
-.nbody{
-  margin:10px;
+.nbody {
+  margin: 10px;
+}
+.fTable {
+  border-collapse: separate;
+  border-spacing: .5em;
 }
 .fadein {
   /*margin: 10px;*/

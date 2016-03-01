@@ -188,7 +188,3 @@ Particles.prototype.clearCanvas = function() {
 
 
 // go go go!
-var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-if (is_chrome) {
-  var particle = new Particles().init();
-}

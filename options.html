@@ -4,6 +4,23 @@
   <title>Options</title>
   <script src="jquery.js"></script>
   <script src="init.js"></script>
+  <link rel="stylesheet" href="bootstrap-switch.min.css">
+  <script src="bootstrap-switch.min.js"></script>
+  <script>
+    $("document").ready(function() {
+
+      //  $("input[name='animation-toggle']").bootstrapSwitch();
+      if (getCookie("animations") == "true") {
+        $("#animation-toggle").bootstrapSwitch('state', true);
+      } else {
+        $("#animation-toggle").bootstrapSwitch('state', false);
+      }
+
+      $("#animation-toggle").bootstrapSwitch("onSwitchChange", function() {
+        setCookie("animations",$(this).bootstrapSwitch("state"));
+      });
+    });
+  </script>
 </head>
 
 <body active="OPTIONS">
@@ -11,8 +28,8 @@
 
   <div id="navbar"></div>
 
-  <table class="glasspanel" style="border-collapse: separate;border-spacing:.5em;font-family:Timeburner;font-size:2em;text-align:left;z-index:100;margin:auto;margin-top:5%;">
-      <tr>
+  <table class="glasspanel fTable" style="font-family:Timeburner;font-size:2em;text-align:left;z-index:100;margin:auto;margin-top:5%;">
+    <tr>
       <b>
       <td>
         Option
@@ -27,7 +44,7 @@
         Animations
       </td>
       <td>
-        [ON/OFF]
+        <input id="animation-toggle" type="checkbox">
       </td>
     </tr>
     <tr>

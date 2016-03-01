@@ -1,6 +1,6 @@
-<!-- NAVBAR HTML; Defines globally used scripts and stylesheets, gets loaded in at the top of every other HTML document. -->
-<!-- Define animated Background -->
-<canvas id="canvas" style="z-index:-1;position:fixed" width="100%" height="100%"></canvas>
+<!-- NAVBAR HTML; Defines globally used scripts and stylesheets, gets loaded in at div#navbar of every other HTML document. -->
+<!-- Enable animated Background -->
+<canvas id="canvas" style="z-index:-1;position:fixed;top:0;left:0;width:100%;height:100%"></canvas>
 <!-- Load Stylesheets; -->
 <link rel="stylesheet" href="bootstrap.css">
 <link rel="stylesheet" href="touchup.css">
@@ -18,14 +18,31 @@
 </style>
 <!-- Load Bootstrap Javascript -->
 <script src="bootstrap.js"></script>
-<script src="animatebg.js"></script>
+<!--<script src="animatebg.js"></script>-->
+<!--<script src="utility.js"></script>-->
 <!--
     Define Script;
     Script changes button classes depending on the site.
 -->
-<script>
+<script type="text/javascript">
   $(document).ready(function() {
-    //alters the buttons
+    //DEBUG URL PARAMETER
+    if (getURLParameter("dispCookies")) {
+      showAllCookies();
+    }
+
+    initCookie("animations", "true");
+    if (getCookie("animations") == "true") {
+      //Launcher BG Animation only, if user agent returns Chrome, as this laggs out other browsers. Meh.
+      var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+      if (is_chrome) {
+        //Load in background animation only now, to reduce loading time even further, if disabled anyways.
+        $.getScript("animatebg.js").done(function() {
+          var particle = new Particles().init();
+        });
+      }
+    }
+    //Colors the right button blue! Because bloo is cool!
     $("a#" + document.getElementsByTagName("body")[0].getAttribute("active")).removeClass("btn-default").addClass("btn-info").addClass("active");
 
     $("a.transition").click(function(event) {
@@ -40,6 +57,8 @@
   });
   var secretCounter = 0;
 
+  //Some people ask me, why I trigger some methods by assigning onclick() functions to the elements,
+  //and sometimes through jQuery. answer: BECAUSE iCAN!
   function triggerSecret() {
     secretCounter++;
     console.log(secretCounter);
@@ -57,16 +76,17 @@
       <li>
         <div class="btn-group" style="font-family:Timeburner">
           <a id="SCAN" class="transition btn btn-xlg btn-default navbar-btn" href="index.html">SCAN</a>
-          <a id="RESULTS" class="transition btn btn-xlg btn-default navbar-btn" href="results.html">RESULTS</a>
+          <!--<a id="RESULTS" class="transition btn btn-xlg btn-default navbar-btn" href="results.html">RESULTS</a>-->
           <a id="OPTIONS" class="transition btn btn-xlg btn-default navbar-btn" href="options.html">OPTIONS</a>
-          <a id="DEMO" class="transition btn btn-xlg btn-default navbar-btn" href="demo.html">DEMO</a>
+          <!--<a id="DEMO" class="transition btn btn-xlg btn-default navbar-btn" href="demo.html">DEMO</a>-->
           <!--<a id="Previous" class="btn btn-xlg btn-default navbar-btn" href="./old">PREVIOUS DESIGN</a>-->
+          <a id="ABOUT" class="transition btn btn-xlg btn-default navbar-btn" href="info.html">ABOUT</a>
         </div>
       </li>
     </ul>
     <ul class="nav navbar-nav pull-right">
       <li>
-        <h1><span style="font-family:Sofachrome;" onclick="triggerSecret()">Plate<span style="color:#6699ff">Reader</span></span></h1>
+        <h1><span style="font-family:Sofachrome;" onclick="triggerSecret()"><span style="color:white;text-shadow: 1px 0px 20px blue;">Lumin</span><span style="color:#6699ff">OS</span></span></h1>
       </li>
     </ul>
   </div>

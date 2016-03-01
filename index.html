@@ -4,7 +4,69 @@
   <title>Scan</title>
   <script src="jquery.js"></script>
   <script src="init.js"></script>
-  <!--<link rel="stylesheet" href="animation.css">-->
+  <script type="text/javascript">
+    $("document").ready(function() {
+      initCookie("welltype", "6");
+      //showAllCookies();
+      $("#modeselect").val(getCookie("welltype"));
+
+      $("#modeselect").change(function() {
+        var select = document.getElementById("modeselect");
+        var mode = select.options[select.selectedIndex].value;
+        setCookie("welltype", mode, 365);
+      });
+
+      //Whoa, there's a lot going on in this here!
+      //The following code executes when the Button with the .scan class is pressed. Basically the Scan button.
+      //It then changes the text to "Running" and disables the button, furthermore it gets the welltype out of the select box
+      //and sends this via an ajax command to the esp.
+      //On success it reenables the button and also enables the download button, if disabled that is.
+      //On failure it reenables the scan button, but not the download Button.
+      $(".scan").click(function() {
+        //console.log("scan!");
+        document.getElementById("reading").innerHTML = "RUNNING";
+        document.getElementById("reading").disabled = true;
+        var select = document.getElementById("modeselect");
+        var mode = select.options[select.selectedIndex].value;
+        $.getJSON('ajax/read', {
+          mode: mode
+        }, function(data) {
+          console.log("Scan command");
+        }).fail(function() {
+          document.getElementById("reading").innerHTML = "SCAN";
+          document.getElementById("reading").disabled = false;
+          console.log("Error");
+        }).done(function() {
+          document.getElementById("reading").innerHTML = "SCAN";
+          document.getElementById("reading").disabled = false;
+          document.getElementById("download").disabled = false;
+          console.log("success");
+        });
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    ///
+    function Well() {}
+    Well.setCanvas = function(canvasId) {
+      this.canvas = document.getElementById(canvasId).getContext("2d");
+    }
+    Well.setType = function(type) {
+      this.type = type || 6;
+    }
+    Well.setData = function(dataset) {
+      this.dataset = dataset;
+    }
+    Well.write = function() {
+        this.canvas.fillText(this.dataset, 10, 20);
+      }
+      ///
+    $("document").ready(function() {
+      Well.setCanvas("wellCanvas");
+      Well.setData("Hi");
+      Well.write();
+    });
+  </script>
 </head>
 
 <body active="SCAN">
@@ -23,8 +85,31 @@
     </div>
   </div>
   -->
-  <div style="text-align:center;margin:auto">
-    
+
+  <div id="secret" style="display:none"></div>
+
+  <div style="backdrop-filter: blur(10px);">
+    <table class="glasspanel fTable" style="font-family:Timeburner;text-align:center;z-index:100;margin:auto;margin-top:5%;">
+      <tr>
+        <td>
+          <button id="reading" class="btn btn-success btn-xlg btn-block scan">SCAN</button>
+        </td>
+        <td>
+          <select id="modeselect" class="form-control input-lg">
+            <option value="6">6-Well</option>
+            <option value="96">96-Well</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <a href="/readings.csv" download>
+            <button id="download" value="96" class="btn btn-warning btn-xlg btn-block csv" disabled>DOWNLOAD CSV</button>
+          </a>
+        </td>
+      </tr>
+    </table>
+    <canvas id="wellCanvas" height="200" width="300">
   </div>
 </body>
 
