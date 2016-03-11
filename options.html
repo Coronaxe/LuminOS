@@ -17,7 +17,19 @@
       }
 
       $("#animation-toggle").bootstrapSwitch("onSwitchChange", function() {
-        setCookie("animations",$(this).bootstrapSwitch("state"));
+        setCookie("animations", $(this).bootstrapSwitch("state"));
+      });
+
+      document.getElementById("fadeInTime").value = getCookie("fadeInTime");
+      document.getElementById("fadeOutTime").value = getCookie("fadeOutTime");
+
+      $("#fadeInTime").change(function(){
+        console.log($(this).val());
+        setCookie("fadeInTime",$(this).val());
+      });
+      $("#fadeOutTime").change(function(){
+        console.log($(this).val());
+        setCookie("fadeOutTime",$(this).val());
       });
     });
   </script>
@@ -52,7 +64,9 @@
         Fade In
       </td>
       <td>
-        1000ms
+        <div class="col-xs-5" style="display:block">
+        <input class="form-control input-lg" type="number" id="fadeInTime">
+      </div>ms
       </td>
     </tr>
     <tr>
@@ -60,7 +74,9 @@
         Fade Out
       </td>
       <td>
-        500ms
+        <div class="col-xs-5" style="display:block">
+          <input class="form-control input-lg" type="number" id="fadeOutTime">
+        </div>ms
       </td>
     </tr>
   </table>

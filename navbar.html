@@ -32,6 +32,8 @@
     }
 
     initCookie("animations", "true");
+    initCookie("fadeInTime","1000");
+    initCookie("fadeOutTime",500);
     if (getCookie("animations") == "true") {
       //Launcher BG Animation only, if user agent returns Chrome, as this laggs out other browsers. Meh.
       var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
@@ -48,7 +50,7 @@
     $("a.transition").click(function(event) {
       event.preventDefault();
       linkLocation = this.href;
-      $("body").stop(true, true).fadeOut(500, redirect);
+      $("body").stop(true, true).fadeOut(parseInt(getCookie("fadeOutTime")), redirect);
     });
 
     function redirect() {

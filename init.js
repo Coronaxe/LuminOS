@@ -44,6 +44,24 @@ function getURLParameter(name) {
   return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null
 }
 
+function UrlExists(url) {
+  var http = new XMLHttpRequest();
+  http.open('HEAD', url, false);
+  http.send();
+  return http.status != 404;
+}
+
+function loadDocument(documentPath, synchronus) {
+  $.ajax({
+    url: documentPath,
+    async: false,
+    success: function(csvd) {
+      data = $.csv.toArrays(csvd);
+    },
+  });
+  return data;
+}
+
 $(document).ready(function() {
   //Ensures Smooth Page Transitions
   $("body").hide(0);
@@ -51,5 +69,6 @@ $(document).ready(function() {
   $("#navbar").load("navbar.html");
   console.log("navbar.html successfully loaded.");
   //Finally fades the body in
-  $("body").delay(300).fadeIn(700)
+  console.log(getCookie("fadeInTime"));
+  $("body").delay(300).fadeIn(parseInt(getCookie("fadeInTime")))
 });
