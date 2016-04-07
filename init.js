@@ -52,23 +52,30 @@ function UrlExists(url) {
 }
 
 function loadDocument(documentPath, synchronus) {
+  data = null;
   $.ajax({
     url: documentPath,
-    async: false,
+    async: !!synchronus,
     success: function(csvd) {
-      data = $.csv.toArrays(csvd);
+      data = csvd;
     },
   });
   return data;
 }
+
+initCookie("animations", "true");
+initCookie("fadeInTime", "1000");
+initCookie("fadeOutTime", 500);
+initCookie("wellreference", "10230");
+initCookie("welltype", "96");
 
 $(document).ready(function() {
   //Ensures Smooth Page Transitions
   $("body").hide(0);
   //Loads the NavBar
   $("#navbar").load("navbar.html");
-  console.log("navbar.html successfully loaded.");
+  //console.log("navbar.html successfully loaded.");
   //Finally fades the body in
-  console.log(getCookie("fadeInTime"));
+  //console.log(getCookie("fadeInTime"));
   $("body").delay(300).fadeIn(parseInt(getCookie("fadeInTime")))
 });

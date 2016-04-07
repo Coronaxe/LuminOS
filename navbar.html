@@ -30,10 +30,6 @@
     if (getURLParameter("dispCookies")) {
       showAllCookies();
     }
-
-    initCookie("animations", "true");
-    initCookie("fadeInTime","1000");
-    initCookie("fadeOutTime",500);
     if (getCookie("animations") == "true") {
       //Launcher BG Animation only, if user agent returns Chrome, as this laggs out other browsers. Meh.
       var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;

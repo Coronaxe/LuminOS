@@ -20,16 +20,40 @@
         setCookie("animations", $(this).bootstrapSwitch("state"));
       });
 
-      document.getElementById("fadeInTime").value = getCookie("fadeInTime");
-      document.getElementById("fadeOutTime").value = getCookie("fadeOutTime");
+      $("#fadeInTime").val(parseInt(getCookie("fadeInTime")));
+      $("#fadeOutTime").val(parseInt(getCookie("fadeOutTime")));
+      $("#wellRef").val(parseInt(getCookie("wellreference")));
 
-      $("#fadeInTime").change(function(){
-        console.log($(this).val());
-        setCookie("fadeInTime",$(this).val());
+      $("#fadeInTime").change(function() {
+        if ($(this).val() > parseInt($(this).attr("max"))) {
+          $(this).val($(this).attr("max"));
+        }
+        setCookie("fadeInTime", $(this).val());
       });
-      $("#fadeOutTime").change(function(){
-        console.log($(this).val());
-        setCookie("fadeOutTime",$(this).val());
+      $("#fadeOutTime").change(function() {
+        if ($(this).val() > parseInt($(this).attr("max"))) {
+          $(this).val($(this).attr("max"));
+        }
+        setCookie("fadeOutTime", $(this).val());
+      });
+      $("#wellRef").change(function() {
+        if ($(this).val() > parseInt($(this).attr("max"))) {
+          $(this).val($(this).attr("max"));
+        }
+        setCookie("wellreference", $(this).val());
+      });
+
+      $("#resetWellRef").click(function() {
+        $("#wellRef").val(parseInt($("#wellRef").attr("default")));
+        setCookie("wellreference", $("#wellRef").attr("default"));
+      });
+      $("#resetFadeInTime").click(function() {
+        $("#fadeInTime").val(parseInt($("#fadeInTime").attr("default")));
+        setCookie("fadeInTime", $("#fadeInTime").attr("default"));
+      });
+      $("#resetFadeOutTime").click(function() {
+        $("#fadeOutTime").val(parseInt($("#fadeOutTime").attr("default")));
+        setCookie("fadeOutTime", $("#fadeOutTime").attr("default"));
       });
     });
   </script>
@@ -61,22 +85,35 @@
     </tr>
     <tr>
       <td>
-        Fade In
+        Well Reference
       </td>
       <td>
-        <div class="col-xs-5" style="display:block">
-        <input class="form-control input-lg" type="number" id="fadeInTime">
-      </div>ms
+        <input class="form-control input-lg" type="number" min="0" max="65535" default="10230" value="10230" id="wellRef">
+      </td>
+      <td>
+        <button id="resetWellRef" class="btn btn-lg btn-default">RESET</button>
       </td>
     </tr>
     <tr>
       <td>
-        Fade Out
+        Fade In (ms)
       </td>
       <td>
-        <div class="col-xs-5" style="display:block">
-          <input class="form-control input-lg" type="number" id="fadeOutTime">
-        </div>ms
+        <input class="form-control input-lg" type="number" min="0" max="2000" default="1000" value="1000" placeholder="ms" id="fadeInTime">
+      </td>
+      <td>
+        <button id="resetFadeInTime" class="btn btn-lg btn-default">RESET</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Fade Out (ms)
+      </td>
+      <td>
+        <input class="form-control input-lg" type="number" min="0" max="2000" default="500" value="500" placeholder="ms" id="fadeOutTime">
+      </td>
+      <td>
+        <button id="resetFadeOutTime" class="btn btn-lg btn-default">RESET</button>
       </td>
     </tr>
   </table>
